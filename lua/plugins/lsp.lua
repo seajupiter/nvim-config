@@ -35,6 +35,7 @@ return {
         end
 
         map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
+        map("<F12>", require("telescope.builtin").lsp_definitions, "Goto Definition")
         map("gr", require("telescope.builtin").lsp_references, "Goto References")
         map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
         map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
@@ -82,6 +83,16 @@ return {
           filetypes = (require("plugins.lsp.servers")[server_name] or {}).filetypes,
         })
       end,
+    })
+
+    require("lspconfig").tinymist.setup({
+      --- todo: these configuration from lspconfig maybe broken
+      single_file_support = true,
+      root_dir = function()
+        return vim.fn.getcwd()
+      end,
+      --- See [Tinymist Server Configuration](https://github.com/Myriad-Dreamin/tinymist/blob/main/Configuration.md) for references.
+      settings = {},
     })
 
     vim.diagnostic.config({

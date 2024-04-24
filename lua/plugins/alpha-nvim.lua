@@ -31,11 +31,7 @@ return {
       dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
       dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-      dashboard.button(
-        "s",
-        " " .. " Search Session",
-        '<cmd>lua require("auto-session.session-lens").search_session<cr>'
-      ),
+      dashboard.button("s", " " .. " Search Session", ":Telescope session-lens <CR>"),
       dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/ <CR>"),
       dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),

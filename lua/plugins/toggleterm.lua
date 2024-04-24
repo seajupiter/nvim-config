@@ -10,7 +10,7 @@ return {
           return vim.o.columns * 0.4
         end
       end,
-      open_mapping = [[<F12>]],
+      open_mapping = [[<F7>]],
       shade_filetypes = {},
       shade_terminals = true,
       shading_factor = 2,
