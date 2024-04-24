@@ -103,34 +103,6 @@ return {
     end,
   },
 
-  -- Lorem Ipsum generator for Neovim
-  {
-    "derektata/lorem.nvim",
-    enabled = false,
-    config = function()
-      local lorem = require("lorem")
-      lorem.setup({
-        sentenceLength = "mixedShort",
-        comma = 1,
-      })
-    end,
-  },
-
-  -- Indent guide for Neovim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    enabled = false,
-    version = "2.1.0",
-    opts = {
-      char = "┊",
-      -- char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-    },
-  },
-
   -- editor config support
   {
     "editorconfig/editorconfig-vim",
@@ -147,6 +119,7 @@ return {
       end
       return ret
     end,
+    multiline = true,
     opts = { labeled_modes = "nx" },
   },
   -- mouse replacement
@@ -167,60 +140,6 @@ return {
       vim.keymap.del({ "x", "o" }, "X")
     end,
   },
-
-  -- breadcrumbs
-  -- {
-  --   "LunarVim/breadcrumbs.nvim",
-  --   config = function()
-  --     require("breadcrumbs").setup()
-  --   end,
-  -- },
-  -- Simple winbar/statusline plugin that shows your current code context
-  -- {
-  --   "SmiteshP/nvim-navic",
-  --   config = function()
-  --     local icons = require("config.icons")
-  --     require("nvim-navic").setup({
-  --       highlight = true,
-  --       lsp = {
-  --         auto_attach = true,
-  --         preference = { "typescript-tools" },
-  --       },
-  --       click = true,
-  --       separator = " " .. icons.ui.ChevronRight .. " ",
-  --       depth_limit = 0,
-  --       depth_limit_indicator = "..",
-  --       icons = {
-  --         File = " ",
-  --         Module = " ",
-  --         Namespace = " ",
-  --         Package = " ",
-  --         Class = " ",
-  --         Method = " ",
-  --         Property = " ",
-  --         Field = " ",
-  --         Constructor = " ",
-  --         Enum = " ",
-  --         Interface = " ",
-  --         Function = " ",
-  --         Variable = " ",
-  --         Constant = " ",
-  --         String = " ",
-  --         Number = " ",
-  --         Boolean = " ",
-  --         Array = " ",
-  --         Object = " ",
-  --         Key = " ",
-  --         Null = " ",
-  --         EnumMember = " ",
-  --         Struct = " ",
-  --         Event = " ",
-  --         Operator = " ",
-  --         TypeParameter = " ",
-  --       },
-  --     })
-  --   end,
-  -- },
 
   {
     "utilyre/barbecue.nvim",
@@ -254,12 +173,6 @@ return {
       })
     end,
   },
-  -- persist sessions
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    opts = {},
-  },
 
   -- better code annotation
   {
@@ -276,50 +189,5 @@ return {
       })
     end,
     -- version = "*"
-  },
-
-  {
-    "ThePrimeagen/refactoring.nvim",
-    enabled = false,
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    config = function()
-      require("refactoring").setup({})
-    end,
-  },
-
-  {
-    "echasnovski/mini.statusline",
-    enabled = false,
-    version = "*",
-    config = function()
-      vim.cmd("highlight MiniStatuslineFilename guifg=#C7D3F8 guibg=#1E2032")
-
-      local statusline = require("mini.statusline")
-
-      statusline.setup({
-        use_icons = vim.g.have_nerd_font,
-      })
-
-      local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
-      local git = statusline.section_git({ trunc_width = 75 })
-      local diagnostics = statusline.section_diagnostics({ trunc_width = 75 })
-      local filename = statusline.section_filename({ trunc_width = 140 })
-      local fileinfo = statusline.section_fileinfo({ trunc_width = 120 })
-      local location = statusline.section_location({ trunc_width = 75 })
-      local search = statusline.section_searchcount({ trunc_width = 75 })
-
-      statusline.combine_groups({
-        { hl = mode_hl, strings = { mode } },
-        { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
-        "%<", -- Mark general truncate point
-        { hl = "MiniStatuslineFilename", strings = { filename } },
-        "%=", -- End left alignment
-        { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-        { hl = mode_hl, strings = { search, location } },
-      })
-    end,
   },
 }

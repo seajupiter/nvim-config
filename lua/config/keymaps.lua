@@ -43,8 +43,12 @@ map({ "n", "x", "o" }, "H", "^", opts)
 map({ "n", "x", "o" }, "L", "g_", opts)
 
 -- Navigate buffers
-map("n", "<Right>", ":bnext<CR>", opts)
-map("n", "<Left>", ":bprevious<CR>", opts)
+map("n", "]b", ":bnext<CR>", opts)
+map("n", "[b", ":bprevious<CR>", opts)
+
+-- Navigate tabs
+map("n", "]t", ":tabnext<CR>", opts)
+map("n", "[t", ":tabprevious<CR>", opts)
 
 -- Panes resizing
 map("n", "+", ":vertical resize +5<CR>")
@@ -53,13 +57,13 @@ map("n", "=", ":resize +5<CR>")
 map("n", "-", ":resize -5<CR>")
 
 -- Map enter to ciw in normal mode
-map("n", "<CR>", "ciw", opts)
-map("n", "<BS>", "ci", opts)
+-- map("n", "<CR>", "ciw", opts)
+-- map("n", "<BS>", "ci", opts)
 
-map("n", "n", "nzzv", opts)
-map("n", "N", "Nzzv", opts)
-map("n", "*", "*zzv", opts)
-map("n", "#", "#zzv", opts)
+map("n", "n", "nzz", opts)
+map("n", "N", "Nzz", opts)
+map("n", "*", "*zz", opts)
+map("n", "#", "#zz", opts)
 map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
@@ -67,7 +71,7 @@ map("n", "g#", "g#zz", opts)
 -- map("n", ";", "<cmd>Telescope resume<cr>", opts)
 
 -- search current buffer
-map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+map("n", "<C-f>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 
 -- search modified files
 map("n", "<Leader>m", ":Telescope git_status<CR>", opts)

@@ -17,12 +17,6 @@ return {
     v = { require("config.utils").toggle_set_color_column, "Toggle Color Line" },
     c = { require("config.utils").toggle_cursor_line, "Toggle Cursor Line" },
   },
-  i = {
-    name = "Sessions",
-    s = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
-    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
-    d = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
-  },
   r = {
     name = "Replace (Spectre)",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
@@ -100,16 +94,17 @@ return {
     S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
     e = { "<cmd>Telescope frecency<cr>", "Frecency" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    d = {
-      name = "+DAP",
-      c = { "<cmd>Telescope dap commands<cr>", "Dap Commands" },
-      b = { "<cmd>Telescope dap list_breakpoints<cr>", "Dap Breakpoints" },
-      g = { "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
-      v = { "<cmd>Telescope dap variables<cr>", "Dap Variables" },
-      f = { "<cmd>Telescope dap frames<cr>", "Dap Frames" },
-    },
+    s = { require("auto-session.session-lens").search_session, "Search Session" },
+    -- d = {
+    --   name = "+DAP",
+    --   c = { "<cmd>Telescope dap commands<cr>", "Dap Commands" },
+    --   b = { "<cmd>Telescope dap list_breakpoints<cr>", "Dap Breakpoints" },
+    --   g = { "<cmd>Telescope dap configurations<cr>", "Dap Configurations" },
+    --   v = { "<cmd>Telescope dap variables<cr>", "Dap Variables" },
+    --   f = { "<cmd>Telescope dap frames<cr>", "Dap Frames" },
+    -- },
     N = {
-      function ()
+      function()
         require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
       end,
       "Search Neovim Config",
@@ -122,18 +117,18 @@ return {
   --   x = { "<cmd>TodoTrouble<cr>", "Todo (Trouble)" },
   --   X = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr><cr>", "Todo/Fix/Fixme (Trouble)" },
   -- },
-  d = {
-    name = "Debug",
-    b = { require("dap").toggle_breakpoint, "Breakpoint" },
-    c = { require("dap").continue, "Continue" },
-    i = { require("dap").step_into, "Into" },
-    o = { require("dap").step_over, "Over" },
-    O = { require("dap").step_out, "Out" },
-    r = { require("dap").repl.toggle, "Repl" },
-    l = { require("dap").run_last, "Last" },
-    u = { require("dapui").toggle, "UI" },
-    x = { require("dap").terminate, "Exit" },
-  },
+  -- d = {
+  --   name = "Debug",
+  --   b = { require("dap").toggle_breakpoint, "Breakpoint" },
+  --   c = { require("dap").continue, "Continue" },
+  --   i = { require("dap").step_into, "Into" },
+  --   o = { require("dap").step_over, "Over" },
+  --   O = { require("dap").step_out, "Out" },
+  --   r = { require("dap").repl.toggle, "Repl" },
+  --   l = { require("dap").run_last, "Last" },
+  --   u = { require("dapui").toggle, "UI" },
+  --   x = { require("dap").terminate, "Exit" },
+  -- },
   n = {
     name = "+Neogen",
     g = { "<cmd>lua require('neogen').generate()<cr>", "Generate Annotatin" },
@@ -145,5 +140,5 @@ return {
   },
   x = {
     name = "+Trouble",
-  }
+  },
 }
