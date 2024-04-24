@@ -2,23 +2,19 @@ return {
   -- Autotags
   {
     "windwp/nvim-ts-autotag",
+    lazy = true,
     opts = {},
   },
 
   -- delete buffer
   {
-    "famiu/bufdelete.nvim",
-    event = "VeryLazy",
+    "echasnovski/mini.bufremove",
+    version = "*",
     config = function()
-      vim.keymap.set(
-        "n",
-        "Q",
-        ":lua require('bufdelete').bufdelete(0, false)<cr>",
-        { noremap = true, silent = true, desc = "Delete buffer" }
-      )
+      require("mini.bufremove").setup()
+      vim.keymap.set("n", "Q", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "close current buffer" })
     end,
   },
-
   -- comments
   {
     "numToStr/Comment.nvim",

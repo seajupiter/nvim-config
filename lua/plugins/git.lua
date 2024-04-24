@@ -3,8 +3,8 @@ return {
     "lewis6991/gitsigns.nvim",
     lazy = false,
     config = function()
-      local icons = require('config.icons')
-      require("gitsigns").setup {
+      local icons = require("config.icons")
+      require("gitsigns").setup({
         signs = {
           add = {
             hl = "GitSignsAdd",
@@ -68,27 +68,37 @@ return {
         yadm = { enable = false },
 
         on_attach = function(bufnr)
-          vim.keymap.set('n', '<leader>H', require('gitsigns').preview_hunk,
-            { buffer = bufnr, desc = 'Preview git hunk' })
+          vim.keymap.set(
+            "n",
+            "<leader>H",
+            require("gitsigns").preview_hunk,
+            { buffer = bufnr, desc = "Preview git hunk" }
+          )
 
-          vim.keymap.set('n', ']]', require('gitsigns').next_hunk,
-            { buffer = bufnr, desc = 'Next git hunk' })
+          vim.keymap.set("n", "]]", require("gitsigns").next_hunk, { buffer = bufnr, desc = "Next git hunk" })
 
-          vim.keymap.set('n', '[[', require('gitsigns').prev_hunk,
-            { buffer = bufnr, desc = 'Previous git hunk' })
+          vim.keymap.set("n", "[[", require("gitsigns").prev_hunk, { buffer = bufnr, desc = "Previous git hunk" })
         end,
-      }
-    end
+      })
+    end,
   },
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
   },
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
 
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    config = true,
+  },
   -- not git, but it's okay
   "mbbill/undotree",
 }

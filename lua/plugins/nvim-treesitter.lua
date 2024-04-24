@@ -9,6 +9,9 @@ return {
     },
     config = function()
       require("nvim-treesitter.configs").setup({
+        autotag = {
+          enable = true,
+        },
         sync_install = false,
         ignore_install = { "javascript" },
         modules = {},
