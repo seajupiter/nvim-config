@@ -7,7 +7,7 @@ return {
         "theHamsta/nvim-dap-virtual-text",
         "nvim-telescope/telescope-dap.nvim",
         "folke/neodev.nvim",
-        "nvim-neotest/nvim-nio"
+        "nvim-neotest/nvim-nio",
     },
     config = function()
         local dap = require("dap")
@@ -15,21 +15,17 @@ return {
         local virtual_text = require("nvim-dap-virtual-text")
 
         dap.adapters.lldb = {
-            type = 'executable',
-            command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
-            name = 'lldb'
+            type = "executable",
+            command = "/opt/homebrew/opt/llvm/bin/lldb-vscode", -- adjust as needed, must be absolute path
+            name = "lldb",
         }
 
         local lldb = {
             name = "Launch lldb",
-            type = "lldb",      -- matches the adapter
+            type = "lldb", -- matches the adapter
             request = "launch", -- could also attach to a currently running process
             program = function()
-                return vim.fn.input(
-                    "Path to executable: ",
-                    vim.fn.getcwd() .. "/",
-                    "file"
-                )
+                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
             end,
             cwd = "${workspaceFolder}",
             stopOnEntry = false,
@@ -38,10 +34,10 @@ return {
         }
 
         dap.configurations.rust = {
-            lldb
+            lldb,
         }
 
         dapui.setup()
         virtual_text.setup()
-    end
+    end,
 }

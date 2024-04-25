@@ -1,3 +1,5 @@
 # Neovim configuration
 
-Always a WIP.
+My neovim configuration on Mac.
+
+Modified from [adibhanna/nvim](https://github.com/adibhanna/nvim)

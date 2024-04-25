@@ -50,9 +50,3 @@ vim.opt.fillchars = { eob = " " } -- change the character at the end of buffer
 vim.opt.tabstop = 4 -- insert 2 spaces for a tab
 -- vim.opt.laststatus = 0                          -- Always display the status line
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~" -- allow the arrow keys to move between windows
-
-vim.filetype.add({
-  extension = {
-    typ = "typst",
-  },
-})

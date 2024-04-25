@@ -1,6 +1,18 @@
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
+-- Get rid of yanking of d
+vim.cmd([[
+    nnoremap p "0p
+    nnoremap P "0P
+    vnoremap p "0p
+    vnoremap P "0P
+    vnoremap x "0x
+    nnoremap x "0x
+    nnoremap y "0y
+    vnoremap y "0y
+]])
+
 -- Keep cursor centered when scrolling
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
@@ -20,10 +32,6 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
--- paste over currently selected text without yanking it
-map("v", "p", '"_dp')
-map("v", "P", '"_dP')
 
 -- copy everything between { and } including the brackets
 -- p puts text after the cursor,
@@ -45,6 +53,8 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- Navigate buffers
 map("n", "]b", ":bnext<CR>", opts)
 map("n", "[b", ":bprevious<CR>", opts)
+map("n", "<D-Right>", "<cmd>bnext<CR>", opts)
+map({ "n", "i" }, "<D-Left>", "<cmd>bprevious<CR>", opts)
 
 -- Navigate tabs
 map("n", "]t", ":tabnext<CR>", opts)
@@ -97,3 +107,9 @@ map("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- ctrl + x to cut full line
 map("n", "<C-x>", "dd", opts)
+
+-- window navigation
+map("n", "<C-h>", "<C-w>h", opts)
+map("n", "<C-j>", "<C-w>j", opts)
+map("n", "<C-k>", "<C-w>k", opts)
+map("n", "<C-l>", "<C-w>l", opts)
