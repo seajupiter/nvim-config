@@ -3,9 +3,12 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "williamboman/mason.nvim", config = true },
-        { "j-hui/fidget.nvim", opts = {} },
-        "folke/neodev.nvim",
+        { "j-hui/fidget.nvim",       opts = {} },
         { "hrsh7th/cmp-nvim-lsp" },
+        {
+            "folke/neoconf.nvim",
+            cmd = "Neoconf",
+        },
     },
     config = function()
         require("mason").setup({
@@ -20,8 +23,6 @@ return {
         })
         require("lspconfig.ui.windows").default_options.border = "single"
 
-        require("neodev").setup()
-
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
             callback = function(event)
@@ -35,7 +36,7 @@ return {
                 map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
                 map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
                 map("<leader>p", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-                map("<leader>P", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
+                map("<leader>P", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
                 map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
                 map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -60,6 +61,9 @@ return {
                 end
             end,
         })
+
+        require("neoconf").setup()
+        require("plugins.config.lspservers")
 
         vim.diagnostic.config({
             title = false,

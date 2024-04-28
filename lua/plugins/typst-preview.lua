@@ -9,7 +9,7 @@ return {
         config = function()
             require("typst-preview").setup({
                 open_cmd = "open %s -a Firefox.app",
-                invert_colors = "always",
+                invert_colors = "auto",
             })
         end,
     },

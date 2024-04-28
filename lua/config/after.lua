@@ -4,5 +4,6 @@ vim.filetype.add({
         typ = "typst",
         env = "sh",
         envrc = "sh",
+        scl = "scallop",
     },
 })

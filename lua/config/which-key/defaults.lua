@@ -12,6 +12,7 @@ return {
     A = "Swap previous param",
     o = { require("telescope.builtin").buffers, "Open Buffer" },
     W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+    z = { "<cmd>ZenMode<cr>", "Zne Mode" },
     u = {
         name = "UI",
         v = { require("config.utils").toggle_set_color_column, "Toggle Color Line" },
@@ -26,7 +27,7 @@ return {
     G = {
         name = "+Git",
         k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+        l = { "<cmd>BlameToggle<cr>", "Toggle Blame" },
         p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
         R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
@@ -44,8 +45,8 @@ return {
             "Checkout commit(for current file)",
         },
         d = {
-            "<cmd>Gitsigns diffthis HEAD<cr>",
-            "Git Diff",
+            "<cmd>DiffviewOpen<cr>",
+            "Open Diffview",
         },
         U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
     },
@@ -140,5 +141,10 @@ return {
     },
     x = {
         name = "+Trouble",
+    },
+    c = {
+        name = "+Copilot",
+        e = { "<cmd>CopilotChatExplain<cr>", "CopilotChat: Explain" },
+        t = { "<cmd>CopilotChatToggle<cr>", "CopilotChat: Toggle" },
     },
 }

@@ -56,9 +56,10 @@ map("n", "[b", ":bprevious<CR>", opts)
 map("n", "<D-Right>", "<cmd>bnext<CR>", opts)
 map({ "n", "i" }, "<D-Left>", "<cmd>bprevious<CR>", opts)
 
--- Navigate tabs
+-- Manipulating tabs
 map("n", "]t", ":tabnext<CR>", opts)
 map("n", "[t", ":tabprevious<CR>", opts)
+map("n", "<Leader><backspace>", ":tabclose<CR>", opts)
 
 -- Panes resizing
 map("n", "+", ":vertical resize +5<CR>")

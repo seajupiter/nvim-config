@@ -35,5 +35,8 @@ return {
             --     view = "cmdline",
             -- },
         })
+        require("notify").setup({
+            background_colour = "#000000",
+        })
     end,
 }

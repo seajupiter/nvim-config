@@ -17,15 +17,7 @@ return {
 
             local null_ls_utils = require("null-ls.utils")
 
-            mason_null_ls.setup({
-                ensure_installed = {
-                    "prettier", -- prettier formatter
-                    "stylua", -- lua formatter
-                    "shellcheck", -- shell linter
-                    "shfmt", -- shell formatter
-                    "black", -- python formatter
-                },
-            })
+            mason_null_ls.setup({})
 
             local formatting = null_ls.builtins.formatting
             -- local diagnostics = null_ls.builtins.diagnostics
@@ -38,7 +30,6 @@ return {
 
                 sources = {
                     formatting.stylua,
-                    formatting.prettier,
                     formatting.shfmt,
                     formatting.black,
                     formatting.typstfmt,
@@ -56,7 +47,7 @@ return {
                             callback = function()
                                 -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                                 -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-                                vim.lsp.buf.format({async = false})
+                                vim.lsp.buf.format({ async = false })
                             end,
                         })
                     end

@@ -23,10 +23,7 @@ return {
                 -- context_commentstring = { enable = true, enable_autocmd = false },
                 auto_install = true,
                 ensure_installed = {
-                    -- "bash",
                     "c",
-                    "html",
-                    "javascript",
                     "json",
                     "lua",
                     "luadoc",
@@ -34,20 +31,11 @@ return {
                     "markdown",
                     "markdown_inline",
                     "python",
-                    "query",
                     "regex",
-                    "tsx",
-                    "typescript",
                     "vim",
                     "vimdoc",
                     "yaml",
                     "rust",
-                    "go",
-                    "gomod",
-                    "gowork",
-                    "gosum",
-                    "terraform",
-                    "proto",
                 },
                 incremental_selection = {
                     enable = true,
@@ -77,12 +65,12 @@ return {
                             ["ia"] = { query = "@parameter.inner", desc = "inside a parameter" },
                         },
                         selection_modes = {
-                            ["@parameter.outer"] = "v", -- charwise
-                            ["@parameter.inner"] = "v", -- charwise
-                            ["@function.outer"] = "v", -- charwise
+                            ["@parameter.outer"] = "v",   -- charwise
+                            ["@parameter.inner"] = "v",   -- charwise
+                            ["@function.outer"] = "v",    -- charwise
                             ["@conditional.outer"] = "V", -- linewise
-                            ["@loop.outer"] = "V", -- linewise
-                            ["@class.outer"] = "<c-v>", -- blockwise
+                            ["@loop.outer"] = "V",        -- linewise
+                            ["@class.outer"] = "<c-v>",   -- blockwise
                         },
                         include_surrounding_whitespace = false,
                     },
