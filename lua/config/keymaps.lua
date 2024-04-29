@@ -3,14 +3,16 @@ local map = vim.keymap.set
 
 -- Get rid of yanking of d
 vim.cmd([[
-    nnoremap p "0p
-    nnoremap P "0P
-    vnoremap p "0p
-    vnoremap P "0P
-    vnoremap x "0x
-    nnoremap x "0x
-    nnoremap y "0y
-    vnoremap y "0y
+    nnoremap p "+p
+    nnoremap P "+P
+    vnoremap p "+p
+    vnoremap P "+P
+    vnoremap x "+x
+    nnoremap x "+x
+    nnoremap y "+y
+    vnoremap y "+y
+    nnoremap d "_d
+    vnoremap d "_d
 ]])
 
 -- Keep cursor centered when scrolling

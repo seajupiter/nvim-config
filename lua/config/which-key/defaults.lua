@@ -26,6 +26,7 @@ return {
     },
     G = {
         name = "+Git",
+        G = { "<cmd>Neogit<cr>", "open Neogit" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
         l = { "<cmd>BlameToggle<cr>", "Toggle Blame" },
         p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
