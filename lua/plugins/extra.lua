@@ -112,8 +112,8 @@ return {
     {
         "ggandor/leap.nvim",
         keys = {
-            { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-            { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+            { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+            { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
             { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
         },
         config = function(_, opts)
@@ -175,5 +175,19 @@ return {
             })
         end,
         -- version = "*"
+    },
+
+    -- Camel case/snake case motion
+    {
+        "bkad/CamelCaseMotion",
+        keys = {
+            { "e",  "<Plug>CamelCaseMotion_e",  mode = { "n", "o", "x" } },
+            { "b",  "<Plug>CamelCaseMotion_b",  mode = { "n", "o", "x" } },
+            { "ge", "<Plug>CamelCaseMotion_ge", mode = { "n", "o", "x" } },
+            { "w",  "<Plug>CamelCaseMotion_w",  mode = { "n", "o", "x" } },
+            { "iw", "<Plug>CamelCaseMotion_iw", mode = { "o", "x" } },
+            { "ib", "<Plug>CamelCaseMotion_ib", mode = { "o", "x" } },
+            { "ie", "<Plug>CamelCaseMotion_ie", mode = { "o", "x" } },
+        },
     },
 }
