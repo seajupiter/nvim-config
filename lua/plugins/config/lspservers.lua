@@ -47,7 +47,6 @@ lspconfig.vimls.setup({
     filetypes = { "vim" },
 })
 
-lspconfig.pyright.setup({})
+lspconfig.pylyzer.setup({})
 
 lspconfig.rust_analyzer.setup({})
-

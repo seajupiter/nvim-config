@@ -5,14 +5,19 @@ local map = vim.keymap.set
 vim.cmd([[
     nnoremap p "+p
     nnoremap P "+P
+    nnoremap x "+x
+    nnoremap y "+y
+    nnoremap d "_d
     vnoremap p "+p
     vnoremap P "+P
     vnoremap x "+x
-    nnoremap x "+x
-    nnoremap y "+y
     vnoremap y "+y
-    nnoremap d "_d
     vnoremap d "_d
+    xnoremap p "+p
+    xnoremap P "+P
+    xnoremap x "+x
+    xnoremap y "+y
+    xnoremap d "_d
 ]])
 
 -- Keep cursor centered when scrolling
@@ -30,6 +35,10 @@ map("n", "<Leader>q", ":q!<CR>", opts)
 -- Remap for dealing with visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+map("n", "<Up>", "v:count == 0 ? 'gk' : '<Up>'", { expr = true })
+map("n", "<Down>", "v:count == 0 ? 'gj' : '<Up>'", { expr = true })
+map("i", "<Up>", "v:count == 0 ? '<C-o>gk' : '<Up>'", { expr = true })
+map("i", "<Down>", "v:count == 0 ? '<C-o>gj' : '<Up>'", { expr = true })
 
 -- better indenting
 map("v", "<", "<gv")
@@ -39,10 +48,6 @@ map("v", ">", ">gv")
 -- p puts text after the cursor,
 -- P puts text before the cursor.
 map("n", "YY", "va{Vy", opts)
-
--- Move line on the screen rather than by line in the file
-map("n", "j", "gj", opts)
-map("n", "k", "gk", opts)
 
 -- Exit on jj and jk
 -- map("i", "jj", "<ESC>", opts)

@@ -185,9 +185,9 @@ return {
             { "b",  "<Plug>CamelCaseMotion_b",  mode = { "n", "o", "x" } },
             { "ge", "<Plug>CamelCaseMotion_ge", mode = { "n", "o", "x" } },
             { "w",  "<Plug>CamelCaseMotion_w",  mode = { "n", "o", "x" } },
-            { "iw", "<Plug>CamelCaseMotion_iw", mode = { "o", "x" } },
-            { "ib", "<Plug>CamelCaseMotion_ib", mode = { "o", "x" } },
-            { "ie", "<Plug>CamelCaseMotion_ie", mode = { "o", "x" } },
+            { "iW", "<Plug>CamelCaseMotion_iw", mode = { "o", "x" } },
+            { "iB", "<Plug>CamelCaseMotion_ib", mode = { "o", "x" } },
+            { "iE", "<Plug>CamelCaseMotion_ie", mode = { "o", "x" } },
         },
     },
 }

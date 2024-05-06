@@ -12,7 +12,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ import = "plugins" }, {
+local plugins = "plugins"
+if vim.g.vscode then
+    plugins = "plugins-vscode"
+end
+
+require("lazy").setup({ import = plugins }, {
     install = {
         missing = true,
         colorscheme = { "catppuccin", "habamax" },

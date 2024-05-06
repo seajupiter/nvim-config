@@ -20,7 +20,7 @@ return {
                     virtual_text = "italic",
                 },
                 options = {
-                    transparency = true,
+                    transparency = false,
                 },
             })
             vim.cmd("colorscheme onedark_vivid")
