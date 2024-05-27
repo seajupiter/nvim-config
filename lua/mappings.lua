@@ -146,6 +146,7 @@ map("n", "<leader>ci", function()
     end
 end, { desc = "🤖 CopilotChat - Input" })
 
+-- move lines arround
 map(
     { "n", "i" },
     "<M-Up>",
@@ -170,3 +171,6 @@ map(
     ":move '>+1<CR>gv-gv",
     { desc = "Move Line Down (Visual)", noremap = true, silent = true }
 )
+
+-- Git
+map("n", "<leader>gl", ":LazyGit<CR>", { desc = "LazyGit" })
