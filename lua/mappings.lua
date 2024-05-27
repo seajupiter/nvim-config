@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 local del = vim.keymap.del
 local opts = { noremap = true, silent = true }
@@ -22,7 +20,7 @@ vim.cmd [[
     xnoremap P "+P
     xnoremap x "+x
     xnoremap y "+y
-    xnoremap d "_
+    xnoremap d "_d
 
     " better j and k
     map j gj
@@ -32,8 +30,6 @@ vim.cmd [[
     imap <Up> <C-o>gk
     imap <Down> <C-o>gj
 ]]
-
-map("i", "jk", "<ESC>")
 
 for i = 1, 9, 1 do
     vim.keymap.set("n", string.format("<C-%s>", i), function()
@@ -56,22 +52,13 @@ del("n", "<leader>x")
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 
--- Move selected line / block of text in visual mode
-map("v", "J", ":m '>+1<CR>gv=gv", opts)
-map("v", "K", ":m '<-2<CR>gv=gv", opts)
-
--- Fast saving
-map("n", "<Leader>w", ":write!<CR>", opts)
-map("n", "<Leader>q", ":qa!<CR>", opts)
+-- Fast saving and quiting
+map("n", "<Leader>w", ":w<CR>", opts)
+map("n", "<Leader>q", ":q<CR>", opts)
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
--- copy everything between { and } including the brackets
--- p puts text after the cursor,
--- P puts text before the cursor.
-map("n", "YY", "va{Vy", opts)
+map("v", ">", ">gv", { desc = "Indent" })
+map("v", "<", "<gv", { desc = "Indent" })
 
 -- Move to start/end of line
 map({ "n", "x", "o" }, "H", "^", opts)
@@ -83,11 +70,12 @@ map("n", "[t", ":tabprevious<CR>", opts)
 map("n", "<Leader><backspace>", ":tabclose<CR>", opts)
 
 -- Panes resizing
-map("n", "+", ":vertical resize +5<CR>")
-map("n", "_", ":vertical resize -5<CR>")
-map("n", "=", ":resize +5<CR>")
-map("n", "-", ":resize -5<CR>")
+map("n", "+", ":vertical resize +5<CR>", opts)
+map("n", "_", ":vertical resize -5<CR>", opts)
+map("n", "=", ":resize +5<CR>", opts)
+map("n", "-", ":resize -5<CR>", opts)
 
+-- better cursor placement
 map("n", "n", "nzz", opts)
 map("n", "N", "Nzz", opts)
 map("n", "*", "*zz", opts)
@@ -95,29 +83,18 @@ map("n", "#", "#zz", opts)
 map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
+-- Telescope
+map(
+    "n",
+    "<leader>tc",
+    ":Telescope themes<CR>",
+    { desc = "telescope nvchad themes" }
+)
 map("n", "?", "<cmd>Telescope resume<cr>", opts)
 map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 map("n", "<leader>o", ":Telescope buffers<CR>", opts)
 map("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
 map("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
-
--- Split line with X
-map(
-    "n",
-    "X",
-    ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>",
-    { silent = true }
-)
-
--- Select all
-map("n", "<C-a>", "ggVG", opts)
-
--- write file in current directory
--- :w %:h/<new-file-name>
-map("n", "<C-n>", ":w %:h/", opts)
-
--- ctrl + x to cut full line
-map("n", "<C-x>", "dd", opts)
 
 -- Terminal
 map({ "n", "t" }, "<C-;>", function()
@@ -144,4 +121,52 @@ map(
     "<leader>e",
     "<cmd>NvimTreeFocus<CR>",
     { desc = "nvimtree focus window" }
+)
+
+-- Lspsaga
+map(
+    "n",
+    "<leader>lf",
+    "<cmd> Lspsaga diagnostic_jump_next <cr>",
+    { desc = "Jump to next diagnostic" }
+)
+
+-- IncRename
+map("n", "<leader>cr", function()
+    return ":IncRename " .. vim.fn.expand "<cword>"
+end, { desc = "Inc Rename word under cursor" })
+
+-- Copilot
+map("n", "<leader>ct", ":CopilotChatToggle<cr>")
+map({ "v", "x" }, "<leader>ce", ":CopilotChatExplaint<cr>")
+map("n", "<leader>ci", function()
+    local input = vim.fn.input "🤖 CopilotChat - Input: "
+    if input ~= "" then
+        vim.cmd("CopilotChat " .. input)
+    end
+end, { desc = "🤖 CopilotChat - Input" })
+
+map(
+    { "n", "i" },
+    "<M-Up>",
+    "<Esc><cmd>m-2<CR>",
+    { desc = "Move Line Up (Insert)", noremap = true, silent = true }
+)
+map(
+    { "n", "i" },
+    "<M-Down>",
+    "<Esc><cmd>m+<CR>",
+    { desc = "Move Line Down (Insert)", noremap = true, silent = true }
+)
+map(
+    "x",
+    "<M-Up>",
+    ":move '<-2<CR>gv-gv",
+    { desc = "Move Line Up (Visual)", noremap = true, silent = true }
+)
+map(
+    "x",
+    "<M-Down>",
+    ":move '>+1<CR>gv-gv",
+    { desc = "Move Line Down (Visual)", noremap = true, silent = true }
 )

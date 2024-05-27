@@ -1,17 +1,8 @@
+local overrides = require "configs.overrides"
+
 return {
     {
         "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "lua-language-server",
-                "stylua",
-                "html-lsp",
-                "css-lsp",
-                "prettier",
-                "rust-analyzer",
-                "clangd",
-                "tinymist",
-            },
-        },
+        opts = overrides.mason,
     },
 }

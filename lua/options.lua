@@ -1,7 +1,6 @@
 require "nvchad.options"
 
 -- add yours here!
-
 vim.opt.clipboard = "unnamed" -- copy/paste to system clipboard
 vim.opt.incsearch = true -- make search act like search in modern browsers
 vim.opt.backup = false -- creates a backup file
