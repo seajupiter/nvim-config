@@ -31,6 +31,13 @@ vim.cmd [[
     imap <Down> <C-o>gj
 ]]
 
+-- noh
+map("n", "<Esc>", ":noh<CR><Esc>", opts)
+
+-- quick save
+map("n", "<D-s>", ":w<CR>", opts)
+map("i", "<D-s>", "<C-o>:w<CR>", opts)
+
 for i = 1, 9, 1 do
     vim.keymap.set("n", string.format("<C-%s>", i), function()
         vim.api.nvim_set_current_buf(vim.t.bufs[i])
@@ -148,15 +155,15 @@ end, { desc = "🤖 CopilotChat - Input" })
 
 -- move lines arround
 map(
-    { "n", "i" },
+    { "n" },
     "<M-Up>",
-    "<Esc><cmd>m-2<CR>",
+    "<cmd>m-2<CR>",
     { desc = "Move Line Up (Insert)", noremap = true, silent = true }
 )
 map(
-    { "n", "i" },
+    { "n" },
     "<M-Down>",
-    "<Esc><cmd>m+<CR>",
+    "<cmd>m+<CR>",
     { desc = "Move Line Down (Insert)", noremap = true, silent = true }
 )
 map(

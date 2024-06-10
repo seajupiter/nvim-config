@@ -82,4 +82,7 @@ return {
 
     -- Disable indent guides
     { "lukas-reineke/indent-blankline.nvim", enabled = false },
+
+    -- Sync terminal background color
+    { "typicode/bg.nvim", lazy = false },
 }

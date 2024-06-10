@@ -45,4 +45,5 @@ require "autocmds"
 vim.schedule(function()
     require "mappings"
 end)
-require "myinit"
+
+require "after"

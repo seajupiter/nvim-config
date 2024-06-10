@@ -6,9 +6,15 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-    Comment = {
-        italic = true,
-    },
+    Type = { italic = true },
+    Comment = { italic = true },
+    SpecialComment = { italic = true },
+    TSAttribute = { italic = true },
+    TSParameter = { italic = true },
+    TSLabel = { italic = true },
+    TSVariableBuiltin = { italic = true },
+    TSTagAttribute = { italic = true },
+    TSComment = { italic = true },
 }
 
 ---@type HLTable

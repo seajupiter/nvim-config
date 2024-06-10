@@ -13,7 +13,7 @@ M.ui = {
 
     cmp = {
         icons = true,
-        style = "atom",
+        style = "default",
         selected_item_bg = "simple",
     },
 
@@ -34,19 +34,15 @@ M.ui = {
             "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
             "                                   ",
         },
+        buttons = {
+            { "  Find File", "Spc f f", "Telescope find_files" },
+            { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+            { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+            { "  Bookmarks", "Spc m a", "Telescope marks" },
+            { "  Themes", "Spc t c", "Telescope themes" },
+            { "  Mappings", "Spc c h", "NvCheatsheet" },
+        },
     },
-    -- -- restore nvim-tree with auto-session
-    -- autocmd({ "BufEnter" }, {
-    --     pattern = "NvimTree*",
-    --     callback = function()
-    --         local api = require "nvim-tree.api"
-    --         local view = require "nvim-tree.view"
-    --
-    --         if not view.is_visible() then
-    --             api.tree.open()
-    --         end
-    --     end,
-    -- })
 
     statusline = {
         -- order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" }, -- default
@@ -59,7 +55,7 @@ M.ui = {
             "%=",
             "lsp_msg",
             "%=",
-            "lsp",
+            -- "lsp",
             "copilot",
             "cursor",
             "cwd",
@@ -81,7 +77,7 @@ M.ui = {
                 end
             end,
         },
-        theme = "vscode_colored",
+        theme = "default",
     },
 
     telescope = {
