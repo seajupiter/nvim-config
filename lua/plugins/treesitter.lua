@@ -1,9 +1,12 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
+        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+        build = ":TSUpdate",
         opts = {
             auto_install = true,
             ensure_installed = {
@@ -22,7 +25,10 @@ return {
                 "yaml",
                 "rust",
             },
-            highlight = { enable = true },
+            highlight = {
+                enable = true,
+                uss_languagetree = true,
+            },
             incremental_selection = {
                 enable = true,
                 keymaps = {
@@ -133,5 +139,8 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end,
     },
 }

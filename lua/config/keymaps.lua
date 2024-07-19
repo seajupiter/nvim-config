@@ -1,26 +1,10 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
-local del = vim.keymap.del
 local opts = { noremap = true, silent = true }
 
 vim.cmd [[
-    " Get rid of yanking of d
-    nnoremap p "+p
-    nnoremap P "+P
-    nnoremap x "+x
-    nnoremap y "+y
-    nnoremap d "_d
-    vnoremap p "+p
-    vnoremap P "+P
-    vnoremap x "+x
-    vnoremap y "+y
-    vnoremap d "_d
-    xnoremap p "+p
-    xnoremap P "+P
-    xnoremap x "+x
-    xnoremap y "+y
-    xnoremap d "_d
+    " swap ; and :
+    noremap ; :
+    noremap : ;
 
     " better j and k
     map j gj
@@ -44,24 +28,13 @@ for i = 1, 9, 1 do
     end)
 end
 
-map("n", "]b", function()
-    require("nvchad.tabufline").next()
-end, { desc = "next buffer" })
-map("n", "[b", function()
-    require("nvchad.tabufline").prev()
-end, { desc = "prev buffer" })
-map("n", "Q", function()
-    require("nvchad.tabufline").close_buffer()
-end, { desc = "close buffer" })
-del("n", "<leader>x")
-
 -- Keep cursor centered when scrolling
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 
 -- Fast saving and quiting
-map("n", "<Leader>w", ":w<CR>", opts)
-map("n", "<Leader>q", ":q<CR>", opts)
+map("n", "<leader>w", ":w<CR>", opts)
+map("n", "<leader>q", ":q<CR>", opts)
 
 -- better indenting
 map("v", ">", ">gv", { desc = "Indent" })
@@ -74,7 +47,7 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- Manipulating tabs
 map("n", "]t", ":tabnext<CR>", opts)
 map("n", "[t", ":tabprevious<CR>", opts)
-map("n", "<Leader><backspace>", ":tabclose<CR>", opts)
+map("n", "<leader><backspace>", ":tabclose<CR>", opts)
 
 -- Panes resizing
 map("n", "+", ":vertical resize +5<CR>", opts)
@@ -91,17 +64,17 @@ map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
 -- Telescope
-map(
-    "n",
-    "<leader>tc",
-    ":Telescope themes<CR>",
-    { desc = "telescope nvchad themes" }
-)
 map("n", "?", "<cmd>Telescope resume<cr>", opts)
 map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 map("n", "<leader>o", ":Telescope buffers<CR>", opts)
 map("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
 map("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
+map(
+    "n",
+    "<leader>fw",
+    "<cmd>Telescope live_grep<CR>",
+    { desc = "telescope live grep" }
+)
 
 -- Terminal
 map({ "n", "t" }, "<C-;>", function()
@@ -175,6 +148,18 @@ map(
 map(
     "x",
     "<M-Down>",
+    ":move '>+1<CR>gv-gv",
+    { desc = "Move Line Down (Visual)", noremap = true, silent = true }
+)
+map(
+    "x",
+    "K",
+    ":move '<-2<CR>gv-gv",
+    { desc = "Move Line Up (Visual)", noremap = true, silent = true }
+)
+map(
+    "x",
+    "J",
     ":move '>+1<CR>gv-gv",
     { desc = "Move Line Down (Visual)", noremap = true, silent = true }
 )

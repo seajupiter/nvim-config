@@ -9,8 +9,7 @@ return {
         },
         config = function()
             require("neoconf").setup()
-            require("nvchad.configs.lspconfig").defaults()
-            require "configs.lspconfig"
+            require "config.lsp"
         end,
     },
 }

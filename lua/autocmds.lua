@@ -25,10 +25,3 @@ autocmd({ "VimEnter" }, {
         end, 1) -- Jank defer to give lazy time to init the plugin, just 1 works for me increase as needed
     end,
 })
-
-autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function(args)
-        require("conform").format { bufnr = args.buf }
-    end,
-})
