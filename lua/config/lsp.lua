@@ -31,37 +31,28 @@ local on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts "List workspace folders")
 
-    map("n", "<leader>ra", function()
-        require "nvchad.lsp.renamer"()
-    end, opts "NvRenamer")
+    map("n", "<leader>ra", vim.lsp.buf.rename, opts "NvRenamer")
 
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
-    map("n", "gr", vim.lsp.buf.references, opts "Show references")
-    map(
-        "n",
-        "gr",
-        ":Telescope lsp_references<CR>",
-        opts "Telescope show references"
-    )
+    map("n", "gr", ":FzfLua lsp_references<CR>", opts "FzfLua show references")
     map(
         "n",
         "<leader>fd",
-        ":Telescope diagnostics<CR>",
-        opts "Telescope show diagnostics"
+        ":FzfLua diagnostics_document<CR>",
+        opts "FzfLua show diagnostics"
     )
     map(
         "n",
         "<leader>fp",
-        ":Telescope lsp_document_symbols<CR>",
-        opts "Telescope show document symbols"
+        ":FzfLua lsp_document_symbols<CR>",
+        opts "FzfLua show document symbols"
     )
     map(
         "n",
         "<leader>fP",
-        ":Telescope lsp_workspace_symbols<CR>",
-        opts "Telescope show workspace symbols"
+        ":FzfLua lsp_workspace_symbols<CR>",
+        opts "FzfLua show workspace symbols"
     )
-    map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts "Code action")
 end
 
 local on_init = function(client, _)

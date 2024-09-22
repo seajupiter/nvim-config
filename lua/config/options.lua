@@ -18,3 +18,6 @@ vim.opt.wrap = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
+vim.opt.guicursor = "n-v-c-i:block"
+
+vim.g.loaded_perl_provider = 0

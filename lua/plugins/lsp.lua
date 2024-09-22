@@ -12,4 +12,13 @@ return {
             require "config.lsp"
         end,
     },
+    {
+        "williamboman/mason.nvim",
+        cmd = "Mason",
+        config = function()
+            require("mason").setup {
+                PATH = "prepend",
+            }
+        end,
+    },
 }

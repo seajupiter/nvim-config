@@ -27,7 +27,9 @@ return {
             },
             highlight = {
                 enable = true,
-                uss_languagetree = true,
+                use_languagetree = true,
+                disable = { "latex" },
+                additional_vim_regex_highlighting = { "latex", "markdown" },
             },
             incremental_selection = {
                 enable = true,

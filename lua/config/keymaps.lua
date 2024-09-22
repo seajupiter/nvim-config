@@ -63,31 +63,35 @@ map("n", "#", "#zz", opts)
 map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
--- Telescope
-map("n", "?", "<cmd>Telescope resume<cr>", opts)
-map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
-map("n", "<leader>o", ":Telescope buffers<CR>", opts)
-map("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
-map("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
-map(
-    "n",
-    "<leader>fw",
-    "<cmd>Telescope live_grep<CR>",
-    { desc = "telescope live grep" }
-)
+-- FzfLua
+map("n", "?", "<cmd>FzfLua resume<cr>", opts)
+map("n", "<C-s>", "<cmd>FzfLua lgrep_curbuf<CR>", opts)
+map("n", "<leader>o", "<cmd>FzfLua buffers<CR>", opts)
+map("n", "<leader><leader>", "<cmd>FzfLua files<CR>", opts)
+map("n", "<leader>fk", ":FzfLua keymaps<CR>", opts)
+map("n", "<leader>fw", "<cmd>FzfLua live_grep_native<CR>", opts)
 
 -- Terminal
-map({ "n", "t" }, "<C-;>", function()
-    require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
-end, { desc = "terminal toggleable vertical term" })
+map(
+    { "n", "t" },
+    "<C-;>",
+    "<cmd>ToggleTerm direction=vertical<CR>",
+    { desc = "terminal toggle term" }
+)
 
-map({ "n", "t" }, "<C-`>", function()
-    require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
-end, { desc = "terminal new horizontal term" })
+map(
+    { "n", "t" },
+    "<C-'>",
+    "<cmd>ToggleTerm direction=float<CR>",
+    { desc = "terminal toggle term" }
+)
 
-map({ "n", "t" }, "<C-'>", function()
-    require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-end, { desc = "terminal toggle floating term" })
+map(
+    { "n", "t" },
+    "<C-`>",
+    "<cmd>ToggleTerm direction=horizontal<CR>",
+    { desc = "terminal toggle term" }
+)
 
 -- NvimTree
 map(
