@@ -10,7 +10,7 @@ return {
                     require("cmp_nvim_ultisnips").setup {}
                 end,
                 -- If you want to enable filetype detection based on treesitter:
-                -- requires = { "nvim-treesitter/nvim-treesitter" },
+                requires = { "nvim-treesitter/nvim-treesitter" },
             },
             { "micangl/cmp-vimtex" },
             {
@@ -43,14 +43,13 @@ return {
                     end,
                 },
                 sources = {
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
-                    { name = "path" },
-                    { name = "ultisnips" },
-                    { name = "vimtex" },
+                    { name = "ultisnips", priority = 100000 },
+                    { name = "nvim_lsp", priority = 10000 },
+                    { name = "vimtex", priority = 1000 },
+                    { name = "nvim_lua", priority = 100 },
+                    { name = "path", priority = 10 },
+                    { name = "buffer", priority = 1 },
                 },
-                -- recommended configuration for <Tab> people:
                 mapping = {
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-n>"] = cmp.mapping.select_next_item(),

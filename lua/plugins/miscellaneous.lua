@@ -6,11 +6,21 @@ return {
             require("mini.surround").setup()
         end,
     },
+
     {
         "max397574/better-escape.nvim",
         event = "InsertEnter",
         config = function()
-            require("better_escape").setup()
+            require("better_escape").setup {
+                default_mappings = false,
+                mappings = {
+                    i = {
+                        j = {
+                            k = "<Esc>",
+                        },
+                    },
+                },
+            }
         end,
     },
 
@@ -24,11 +34,19 @@ return {
     },
 
     {
-        "windwp/nvim-autopairs",
+        "cohama/lexima.vim",
         event = "InsertEnter",
-        config = true,
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
+        init = function()
+            vim.g.lexima_enable_basic_rulse = 1
+        end,
+    },
+
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            vim.keymap.set("n", "f", "<Plug>(leap)")
+            vim.keymap.set("n", "F", "<Plug>(leap-from-window)")
+        end,
     },
 
     {
