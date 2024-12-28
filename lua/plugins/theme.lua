@@ -1,5 +1,15 @@
 return {
     {
+        "metalelf0/base16-black-metal-scheme",
+        priority = 1000,
+        config = function()
+            vim.cmd [[
+                set background=dark
+                colorscheme base16-black-metal
+            ]]
+        end,
+    },
+    {
         "p00f/alabaster.nvim",
         enabled = false,
         priority = 1000,
@@ -12,8 +22,8 @@ return {
     },
     {
         "navarasu/onedark.nvim",
-        -- enabled = false,
-        priority = 1000,
+        enabled = false,
+        -- priority = 1000,
         config = function()
             require("onedark").setup {
                 -- Main options --

@@ -21,6 +21,7 @@ vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.guicursor = "n-v-c-i:block"
 
 vim.g.loaded_perl_provider = 0
+vim.g.python3_host_prog = "/Users/wyt/miniconda3/bin/python3"
 
 if vim.g.neovide then
     vim.opt.guifont = "RobotoMono Nerd Font:h13:b"
